@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.account.model.Account;
+import com.example.account.J2ETestsApplication;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.http.ContentType;
 import org.junit.Before;
@@ -14,16 +16,7 @@ import static com.jayway.restassured.RestAssured.when;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.core.Is.is;
 
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = J2ETestsApplication.class)
-@WebIntegrationTest("server.port=9898")
-public class AccountControllerBigTest {
-
-    @Before
-    public void setupRestAssured(){
-        RestAssured.port = 9898;
-    }
+public class AccountControllerBigTest extends AbstractBigTest{
 
     @Test
     public void should_get_list_of_3_accounts(){
@@ -50,5 +43,21 @@ public class AccountControllerBigTest {
             .log().all()
             .statusCode(201)
             .body("balance", is(balance));
+    }
+
+    @Test
+    public void should_receive_exception_when_balance_is_zero(){
+        Account account = Account.builder().balance(0).build();
+
+        given()
+            .log().all()
+            .contentType(ContentType.JSON)
+            .body(account)
+        .when()
+            .post("/accounts")
+        .then()
+            .log().all()
+            .statusCode(400);
+
     }
 }

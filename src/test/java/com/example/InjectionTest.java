@@ -1,5 +1,8 @@
 package com.example;
 
+import com.example.account.service.AccountService;
+import com.example.account.service.AuthorizationService;
+import com.example.account.J2ETestsApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

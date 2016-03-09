@@ -1,5 +1,10 @@
 package com.example;
 
+import com.example.account.exception.BlockedAccountException;
+import com.example.account.exception.CreditNotAuthorizedException;
+import com.example.account.model.Account;
+import com.example.account.service.AccountService;
+import com.example.account.service.AuthorizationService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

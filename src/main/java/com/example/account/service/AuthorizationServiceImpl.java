@@ -1,5 +1,6 @@
-package com.example;
+package com.example.account.service;
 
+import com.example.account.model.Account;
 import org.springframework.stereotype.Service;
 
 @Service

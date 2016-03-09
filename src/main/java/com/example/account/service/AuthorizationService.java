@@ -1,6 +1,6 @@
-package com.example;
+package com.example.account.service;
 
-import org.springframework.stereotype.Service;
+import com.example.account.model.Account;
 
 public interface AuthorizationService {
     boolean isAllowed(Account account);
